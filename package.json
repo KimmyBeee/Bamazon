@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Week 7 Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KimmyBeee/Bamazon.git"
+  },
+  "author": "Kimmy Bozman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KimmyBeee/Bamazon/issues"
+  },
+  "homepage": "https://github.com/KimmyBeee/Bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.1.0",
+    "mysql": "^2.15.0"
+  }
+}
