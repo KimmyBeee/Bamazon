@@ -12,6 +12,9 @@ var connection = mysql.createConnection({
   database: "bamazon_db"
 });
 
+var product;
+
+
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId + "\n");
@@ -38,37 +41,107 @@ function startTransaction() {
   			);
   		}
   		console.log(table.toString());
-  		buyPrompt();
+  		productPrompt();
 	});
 	
 }
 
-function buyPrompt()	{
-	connection.query("SELECT * FROM products", function(err, results) {
-    if (err) throw err;
+function productPrompt()	{
 
-	inquirer.prompt([{
-		name: "chooseProduct",
+	inquirer.prompt({
+		name: "productNumb",
 		type: "input",
 		message: "Please enter the ID of the product you wish to buy.",
-		validate: function(value)	{
-			if (isNaN(value))	{
-				console.log("\n Please enter a valid number associated with one of our products.")
+			validate: function(input)	{
+				if (isNaN(input))	{
+					console.log("\n Please enter a valid number associated with one of our products.")
+				} else	{
+					connection.query("SELECT * FROM products WHERE?", {item_id: input},
+					function(err, res) {
+						if (err) throw err;
+						console.log("\nYou have selected: " + res[0].product_name);
+						var product = res;
+						quantityPrompt();
+					}
+				);
 			}
-			
-		},
-		{
-			name: "quantity",
-			type: "input",
-			message: "What is the quantity"
 		}
-
-	});
-	.then(function(answer)	{
-		connection.query(SELECT
-
-		)
+		
 	})
 }
 
+function quantityPrompt()	{
+
+	inquirer.prompt({
+		name: "quantity",
+		type: "input",
+		message: "What is the quantity you would like to purchase?",
+			validate: function(input)	{
+				if (isNaN(input))	{
+					console.log("\n Please enter a valid number.")
+				} else	{
+					connection.query("UPDATE products SET ? WHERE ?", {stock_quantity: product.stock_quantity - input, item_id: product},
+					function(err, res) {
+						if (err) throw err;
+						console.log("\nYou have selected: " + input + " of " + res[0].product_name);
+					}
+				);
+			}
+		}
+	})
+}
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 			connection.query(
+// 				"SELECT * FROM products WHERE ?", {
+// 				item_id: answer.product
+// 				},
+// 			function(err)	{
+// 				
+// 				
+// 				quantityPrompt();
+// 				}
+// 			);
+		
+// 		});
+		
+// }
+
+
+
+// 		
+// 	])
+// 	
+// 			console.log(res);
+//     		if (err) 	{
+//     			console.log(err);
+//     		} else	if (input.quantity > res[0].stock_quantity) {
+//     			console.log("Sorry, our on hand quantity can not fulfill your order.");
+// 			} else	{
+// 				console.log("You have chosen to purchase " + input.quantity + " of " + res[0].product_name);
+// 				
+// 					function (err, res)	{
+// 						if (err)	{
+// 							console.log(err);
+// 						}
+// 					}
+// 				)
+// 			}
+	
+// 		}
+// 	)		
+// }
+	
 
