@@ -76,22 +76,27 @@ function productPrompt()	{
 		}])
 	.then(function(answer)	{
 		var quantity = answer.quantity;
-		var id = answer.id
-
-		connection.query("SELECT * FROM products WHERE?", {item_id: id}, function(err, res) {
-			if (err) throw err;
-			if (res[0].stock_quantity - quantity >= 0)	{
-				console.log("You have selected " + quantity + " units of " + res[0].product_name + ".");
-				console.log("\nYour total cost today is: $" + (quantity * res[0].price) + "." + "\nThanks for supporting Kimmy's Bamazon!");
-			} else if (res[0].stock_quantity - quantity <= 0) {
-				console.log("I'm sorry. We currently do have enough stock to fulfill that order.");
-				productPrompt();
-			}
-		})
-
+		var id = answer.id;
+		if (id >= 10)	{
+			console.log("You have chosen a product that we do not carry. Please enter an Item ID from the above table.");
+			productPrompt();
+		} else	{
+			connection.query("SELECT * FROM products WHERE?", {item_id: id}, function(err, res) {
+				if (err) throw err;
+				if (res[0].stock_quantity - quantity >= 0)	{
+					console.log("You have selected " + quantity + " units of the " + res[0].product_name + ".");
+					console.log("\nYour total cost today is: $" + (quantity * res[0].price) + "." + "\nThanks for supporting Kimmy's Bamazon!");
+					// updateInventory();
+				} else if (res[0].stock_quantity - quantity <= 0) {
+					console.log("I'm sorry. We currently do not have enough stock to fulfill that order.");
+					productPrompt();
+				} 
+			})
+		}
 	})
 	
 }
+
 
 // function productPrompt()	{
 
