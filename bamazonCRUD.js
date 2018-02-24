@@ -56,9 +56,7 @@ function productPrompt()	{
 					return true;
 				}
 				console.log("\n Please enter a valid number associated with one of our products.");
-				return false;
-
-				
+				return false;	
 			}	
 		},
 		{
@@ -76,6 +74,7 @@ function productPrompt()	{
 		}])
 	.then(function(answer)	{
 		var quantity = answer.quantity;
+		// var newQuantity = answer[0].stock_quantity - quantity
 		var id = answer.id;
 		if (id >= 10)	{
 			console.log("You have chosen a product that we do not carry. Please enter an Item ID from the above table.");
@@ -86,114 +85,30 @@ function productPrompt()	{
 				if (res[0].stock_quantity - quantity >= 0)	{
 					console.log("You have selected " + quantity + " units of the " + res[0].product_name + ".");
 					console.log("\nYour total cost today is: $" + (quantity * res[0].price) + "." + "\nThanks for supporting Kimmy's Bamazon!");
-					// updateInventory();
+					// updateInventory(newQuantity, id);
+	
 				} else if (res[0].stock_quantity - quantity <= 0) {
 					console.log("I'm sorry. We currently do not have enough stock to fulfill that order.");
 					productPrompt();
 				} 
 			})
 		}
-	})
-	
+		
+	})	
 }
-
-
-// function productPrompt()	{
-
-// 	inquirer.prompt({
-// 		name: "productNumb",
-// 		type: "input",
-// 		message: "Please enter the ID of the product you wish to buy.",
-// 			validate: function(input)	{
-// 				if (isNaN(input))	{
-// 					console.log("\n Please enter a valid number associated with one of our products.")
-// 				} else	{
-// 					connection.query("SELECT * FROM products WHERE?", {item_id: input},
-// 					function(err, res) {
-// 						if (err) throw err;
-// 						console.log("\nYou have selected: " + res[0].product_name);
-// 						var product = res;
-// 						quantityPrompt();
-// 					}
-// 				);
-// 			}
-// 		}
-		
-// 	})
-// }
-
-// function quantityPrompt()	{
-
-// 	inquirer.prompt({
-// 		name: "quantity",
-// 		type: "input",
-// 		message: "What is the quantity you would like to purchase?",
-// 			validate: function(input)	{
-// 				if (isNaN(input))	{
-// 					console.log("\n Please enter a valid number.")
-// 				} else	{
-// 					connection.query("UPDATE products SET ? WHERE ?", {stock_quantity: product.stock_quantity - input, item_id: product},
-// 					function(err, res) {
-// 						if (err) throw err;
-// 						console.log("\nYou have selected: " + input + " of " + res[0].product_name);
-// 					}
-// 				);
-// 			}
-// 		}
-// 	})
-// }
+// connection.query("UPDATE products SET ? WHERE ?", {stock_quantity: res[0].stock_quantity - quantity, item_id: id},
+// 						function(err, res)	{
+// 							if (err) throw err;
+// 							console.log(res.affectedRows);
+// 						})
 				
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 			connection.query(
-// 				"SELECT * FROM products WHERE ?", {
-// 				item_id: answer.product
-// 				},
-// 			function(err)	{
-// 				
-// 				
-// 				quantityPrompt();
-// 				}
-// 			);
-		
-// 		});
-		
-// }
-
-
-
-// 		
-// 	])
-// 	
-// 			console.log(res);
-//     		if (err) 	{
-//     			console.log(err);
-//     		} else	if (input.quantity > res[0].stock_quantity) {
-//     			console.log("Sorry, our on hand quantity can not fulfill your order.");
-// 			} else	{
-// 				console.log("You have chosen to purchase " + input.quantity + " of " + res[0].product_name);
-// 				
-// 					function (err, res)	{
-// 						if (err)	{
-// 							console.log(err);
-// 						}
-// 					}
-// 				)
-// 			}
-	
+// function updateInventory(newQuantity, id)	{
+// 	connection.query ("UPDATE products SET ? WHERE ?", {stock_quantity: newQuantity, item_id: id},
+// 		function(err, )	{
+// 		if (err) throw err;
+// 		console.log(res);
+// 		console.log(res.affectedRows);
 // 		}
-// 	)		
+// 	);	
 // }
-	
 
