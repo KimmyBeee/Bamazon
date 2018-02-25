@@ -47,3 +47,9 @@ Upon launching the program, a table will be displayed with current offerings, th
 Should an invalid item ID number or a quantity that is more than what is available on-hand be requested, the user will be notified and prompted to resubmit their request within the inventory guidelines.
 
 ![Invalid item number or too large a quantity walkthrough](https://github.com/KimmyBeee/Bamazon/blob/master/assets/InvalidEntriesGif.gif "Invalid Item or Quantity Gif")
+
+There is user input, character validation on the entries in case something other than numbers is inputted. The user will get a message asking for a valid number and then resends whatever request was previously answered with invalid characters.
+
+![Invalid character input prompt demo](https://github.com/KimmyBeee/Bamazon/blob/master/assets/InvalidCharacterGif.gif "Invalid Char Gif")
+
+
