@@ -8,7 +8,8 @@ Bamazon is an online shop where users can pick from a tabled catalog of products
 
 **1) Set up mySQL database**
 
-  * Visit the mySQL installation page and install the version to your computer that is the most appropriate for your operating system.
+  * Visit the mySQL installation page and install the version that is the most appropriate for the computer's  
+    operating system.
 
     https://dev.mysql.com/doc/refman/5.6/en/installing.htm
 
@@ -19,7 +20,7 @@ Bamazon is an online shop where users can pick from a tabled catalog of products
     
 **2) NPM install the necessary packages**
 
-  * In your command line interface (Terminal, Bash, Shell, etc), run "npm init" to create a file to hold the necessary            information for your packages.
+  * In the command line interface (Terminal, Bash, Shell, etc), run "npm init" to create a file to hold the necessary            information for the packages.
   
   * Then run "npm install" followed by "inquirer", "colors.js" and "cli_table"; allowing the installations to fully  
     process each time before beginning a new installation.  
@@ -32,7 +33,13 @@ Bamazon is an online shop where users can pick from a tabled catalog of products
     
 **3) Set up files**
 
-  * Again, in your command line interface, write "git clone" followed by " https://github.com/KimmyBeee/Bamazon.git "  
+  * Again, in the command line interface, write "git clone" followed by " https://github.com/KimmyBeee/Bamazon.git "  
     to get access to the files necessary to explore Bamazon.
     
-  * Finally, run "node BamazonCRUD.js" to launch the program.
+  * Finally, run "node BamazonCRUD.js" to launch the program.  
+  
+### Program Walkthrough  
+
+Upon launching the program, a table will be displayed with current offerings, their prices and on-hand stock counts. The first prompt asks for an item ID number and the second prompt asks for the desired quantity to purchase. Upon completion, if there is enough on-hand stock, a confirmation of the order and a transaction total will be given.
+ 
+![alt text](https://github.com/KimmyBeee/Bamazon/blob/master/assets/Bamazon.gif "Basic Purchase Gif")
