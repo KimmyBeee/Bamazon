@@ -42,4 +42,8 @@ Bamazon is an online shop where users can pick from a tabled catalog of products
 
 Upon launching the program, a table will be displayed with current offerings, their prices and on-hand stock counts. The first prompt asks for an item ID number and the second prompt asks for the desired quantity to purchase. Upon completion, if there is enough on-hand stock, a confirmation of the order and a transaction total will be given.
  
-![alt text](https://github.com/KimmyBeee/Bamazon/blob/master/assets/Bamazon.gif "Basic Purchase Gif")
+![Basic walkthrough](https://github.com/KimmyBeee/Bamazon/blob/master/assets/Bamazon.gif "Basic Purchase Gif")
+
+Should an invalid item ID number or a quantity that is more than what is available on-hand be requested, the user will be notified and prompted to resubmit their request within the inventory guidelines.
+
+![Invalid item number or too large a quantity walkthrough](https://github.com/KimmyBeee/Bamazon/blob/master/assets/InvalidEntriesGif.gif "Invalid Item or Quantity Gif")
