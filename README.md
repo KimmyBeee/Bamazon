@@ -11,7 +11,7 @@ Bamazon is an online shop where users can pick from a tabled catalog of products
   * Visit the mySQL installation page and install the version that is the most appropriate for the computer's  
     operating system.
 
-    https://dev.mysql.com/doc/refman/5.6/en/installing.htm
+    https://dev.mysql.com/doc/refman/5.6/en/installing.html
 
 
   * Use the bamazonSeeds.sql file to create a database in Sequel Pro (Mac) or MySQL Workbench (PCs) 
